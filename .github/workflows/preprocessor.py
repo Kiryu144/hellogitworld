@@ -5,4 +5,6 @@ def set_env(name, value):
     with open(env_file, "a") as f:
         f.write(f"{name}=\"{value}\"")
 
-print("Ref: " + os.getenv('GITHUB_ENV'))
+
+
+print("Ref: " + os.getenv('GITHUB_REF'))

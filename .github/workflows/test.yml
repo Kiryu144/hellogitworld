@@ -9,4 +9,3 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: python .github\\workflows\\preprocessor.py
-    - run: echo ${{ env.MY_VAR }}
