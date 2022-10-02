@@ -1,6 +1,8 @@
 import os
 import subprocess
 
+os.chdir(os.getenv("GITHUB_WORKSPACE"))
+
 def set_env(name, value):
     env_file = os.getenv("GITHUB_ENV")
     with open(env_file, "a") as f:
@@ -10,7 +12,7 @@ tag = os.getenv("GITHUB_REF").replace("refs/tags/", "")
 print(f"Found tag '{tag}'")
 
 subprocess.run(["git", "config", "user.name", "GithubActions"])
-raw_commits = subprocess.check_output(["git", "--git-dir", os.getenv("GITHUB_WORKSPACE") + "\\.git", "log", f"{tag}..master", "--oneline", "--no-decorate", "--format=\"%s\""])
+raw_commits = subprocess.check_output(["git", "log", f"{tag}..master", "--oneline", "--no-decorate", "--format=\"%s\""])
 
 commits = { "fix": [], "feature": [], "tweak": [] }
 
