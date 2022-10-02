@@ -12,7 +12,7 @@ tag = os.getenv("GITHUB_REF").replace("refs/tags/", "")
 print(f"Found tag '{tag}'")
 
 subprocess.run(["git", "config", "user.name", "GithubActions"])
-raw_commits = subprocess.run(["git", "log", "--oneline", "--no-decorate", "--format=\"%s\""], capture_output=True, text=True)
+raw_commits = subprocess.run(["git", "log", "--oneline", "--no-decorate", "--format=\"%s\""], capture_output=True, text=True).stdout
 
 commits = { "fix": [], "feature": [], "tweak": [] }
 
