@@ -8,5 +8,5 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
-    - name: "Run Preprocessor"
-      run: python .github\\workflows\\preprocessor.py
+    - name: "Generate Changelog"
+      run: python .github\\workflows\\gen_changelog.py

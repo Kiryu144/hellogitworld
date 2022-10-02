@@ -1,8 +1,6 @@
 import os
 import subprocess
 
-os.chdir(os.getenv("GITHUB_WORKSPACE") + "\\.git")
-
 def set_env(name, value):
     env_file = os.getenv("GITHUB_ENV")
     with open(env_file, "a") as f:
@@ -30,21 +28,24 @@ for line in raw_commits.splitlines():
     elif lowered.startswith("[tweak]"):
         commits["tweak"] += [line[len("[tweak]"):].strip()]
 
-result_markdown = ""
+result_markdown = f"Update **{tag}**\n"
 
-result_markdown += "Features:\n"
+result_markdown += "**Features:**\n"
 for commit in commits["feature"]:
     result_markdown += f"*) {commit}\n"
 result_markdown += "\n"
 
-result_markdown += "Tweaks:\n"
+result_markdown += "**Tweaks:**\n"
 for commit in commits["tweak"]:
     result_markdown += f"*) {commit}\n"
 result_markdown += "\n"
 
-result_markdown += "Fixes:\n"
+result_markdown += "**Fixes:**\n"
 for commit in commits["fix"]:
     result_markdown += f"*) {commit}\n"
 result_markdown += "\n"
 
 print(result_markdown)
+
+with open("changelog.md", "w") as f:
+    f.write(f"```{result_markdown}```")
