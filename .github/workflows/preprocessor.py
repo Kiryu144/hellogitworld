@@ -1,14 +1,8 @@
 import os
- 
-for k, v in os.environ.items():
-    print(f'{k}={v}')
 
+def set_env(name, value):
+    env_file = os.getenv('GITHUB_ENV')
+    with open(env_file, "a") as f:
+        f.write(f"{name}=\"{value}\"")
 
-print()
-
-import os
-
-env_file = os.getenv('GITHUB_ENV')
-
-with open(env_file, "a") as myfile:
-    myfile.write("MY_VAR=This comes from python, yea")
+print("Ref: " + os.getenv('GITHUB_ENV'))
