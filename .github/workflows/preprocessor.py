@@ -20,6 +20,7 @@ raw_commits = subprocess.run(["git", "log", f"{prev_tag}..{tag}", "--oneline", "
 commits = { "fix": [], "feature": [], "tweak": [] }
 
 for line in raw_commits:
+    print(line)
     lowered = line.lower().strip()
 
     if lowered.startswith("[fix]"):
