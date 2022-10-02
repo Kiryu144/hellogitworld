@@ -8,4 +8,5 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - run: python .github\\workflows\\preprocessor.py
+    - name: "Run Preprocessor"
+      run: python .github\\workflows\\preprocessor.py
