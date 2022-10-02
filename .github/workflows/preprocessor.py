@@ -11,7 +11,7 @@ print(f"Found tag '{tag}'")
 
 subprocess.run(["git", "config", "user.name", "GithubActions"])
 subprocess.run(["git", "log", f"{tag}..master", "--oneline", "--no-decorate", "--format=\"%s\""])
-raw_commits = subprocess.check_output(["git", "--git-dir", os.getenv("GITHUB_WORKSPACE"), "log", f"{tag}..main", "--oneline", "--no-decorate", "--format=\"%s\""])
+raw_commits = subprocess.check_output(["git", "--git-dir", os.getenv("GITHUB_WORKSPACE") + "\\.git", "log", f"{tag}..main", "--oneline", "--no-decorate", "--format=\"%s\""])
 
 commits = { "fix": [], "feature": [], "tweak": [] }
 
