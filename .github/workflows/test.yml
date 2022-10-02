@@ -8,5 +8,5 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - run: python ${{ env.GITHUB_ACTION_PATH }}\\preprocessor.py
+    - run: python ${{ env.GITHUB_ACTION_PATH }}preprocessor.py
     - run: echo ${{ env.MY_VAR }}
