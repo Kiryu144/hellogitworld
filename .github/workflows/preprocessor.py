@@ -17,6 +17,8 @@ print(f"Building changelogs for {prev_tag} -> {tag}")
 subprocess.run(["git", "config", "user.name", "GithubActions"])
 raw_commits = subprocess.run(["git", "log", f"{prev_tag}..{tag}", "--oneline", "--no-decorate", "--format=\"%s\""], capture_output=True, text=True).stdout
 
+print(raw_commits.split())
+
 commits = { "fix": [], "feature": [], "tweak": [] }
 
 for line in raw_commits.split():
