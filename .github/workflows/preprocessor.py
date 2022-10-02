@@ -6,8 +6,7 @@ def set_env(name, value):
     with open(env_file, "a") as f:
         f.write(f"{name}=\"{value}\"")
 
-this_tag = os.getenv("GITHUB_REF").replace("refs/tags/", "")
-tag = subprocess.check_output(["git", "describe", "--tags", "--abrev^=0"])
+tag = os.getenv("GITHUB_REF").replace("refs/tags/", "")
 print(f"Found tag '{tag}'")
 
 subprocess.run(["git", "config", "user.name", "GithubActions"])
