@@ -9,7 +9,9 @@ def set_env(name, value):
 tag = os.getenv("GITHUB_REF").replace("refs/tags/", "")
 print(f"Found tag '{tag}'")
 
-raw_commits = subprocess.check_output(["git", "log", f"{tag}..main", "--oneline", "--no-decorate"])
+subprocess.run(["git", "config", "user.name", "GithubActions"])
+subprocess.run(["git", "config", "user.email", "<>"])
+raw_commits = subprocess.check_output(["git", "log", f"{tag}..main", "--oneline", "--no-decorate", "--format=\"%s\""])
 
 commits = { "fix": [], "feature": [], "tweak": [] }
 
