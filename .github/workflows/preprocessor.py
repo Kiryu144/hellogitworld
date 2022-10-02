@@ -3,6 +3,7 @@ import subprocess
 
 os.chdir(os.getenv("GITHUB_WORKSPACE") + "\\.git")
 
+
 def set_env(name, value):
     env_file = os.getenv("GITHUB_ENV")
     with open(env_file, "a") as f:
