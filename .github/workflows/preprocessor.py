@@ -3,7 +3,6 @@ import subprocess
 
 os.chdir(os.getenv("GITHUB_WORKSPACE") + "\\.git")
 
-
 def set_env(name, value):
     env_file = os.getenv("GITHUB_ENV")
     with open(env_file, "a") as f:
@@ -23,7 +22,7 @@ print(raw_commits.split())
 commits = { "fix": [], "feature": [], "tweak": [] }
 
 for line in raw_commits.split():
-    lowered = line.lower().strip()
+    lowered = line[1:-1].lower().strip()
 
     if lowered.startswith("[fix]"):
         commits["fix"] = line[len("[fix]"):].strip()
