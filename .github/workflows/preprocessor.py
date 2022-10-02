@@ -1,6 +1,6 @@
 import os
 import subprocess
- 
+
 os.chdir(os.getenv("GITHUB_WORKSPACE") + "\\.git")
 
 def set_env(name, value):
