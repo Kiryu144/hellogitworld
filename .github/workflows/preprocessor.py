@@ -24,11 +24,11 @@ for line in raw_commits.splitlines():
     lowered = line.lower().strip()
 
     if lowered.startswith("[fix]"):
-        commits["fix"] = line[len("[fix]"):].strip()
+        commits["fix"] += [line[len("[fix]"):].strip()]
     elif lowered.startswith("[feature]"):
-        commits["feature"] = line[len("[feature]"):].strip()
+        commits["feature"] += [line[len("[feature]"):].strip()]
     elif lowered.startswith("[tweak]"):
-        commits["tweak"] = line[len("[tweak]"):].strip()
+        commits["tweak"] += [line[len("[tweak]"):].strip()]
 
 result_markdown = ""
 
