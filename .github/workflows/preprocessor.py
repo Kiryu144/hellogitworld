@@ -3,7 +3,6 @@ import subprocess
 
 os.chdir(os.getenv("GITHUB_WORKSPACE") + "\\.git")
 
-
 def set_env(name, value):
     env_file = os.getenv("GITHUB_ENV")
     with open(env_file, "a") as f:
@@ -18,11 +17,9 @@ print(f"Building changelogs for {prev_tag} -> {tag}")
 subprocess.run(["git", "config", "user.name", "GithubActions"])
 raw_commits = subprocess.run(["git", "log", f"{prev_tag}..{tag}", "--oneline", "--no-decorate", "--format=\"%s\""], capture_output=True, text=True).stdout
 
-print(raw_commits.split())
-
 commits = { "fix": [], "feature": [], "tweak": [] }
 
-for line in raw_commits.split():
+for line in raw_commits:
     lowered = line[1:-1].lower().strip()
 
     if lowered.startswith("[fix]"):
